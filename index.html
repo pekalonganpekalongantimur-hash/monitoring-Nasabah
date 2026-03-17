@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Monitoring Nasabah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <h2>Monitoring Pembayaran</h2>
+  <table border="1" id="tabel">
+    <tr>
+      <th>Nama</th>
+      <th>Status</th>
+    </tr>
+  </table>
+
+<script>
+fetch('data.json')
+  .then(res => res.json())
+  .then(data => {
+    let tabel = document.getElementById('tabel');
+    data.forEach(d => {
+      let row = tabel.insertRow();
+      row.insertCell(0).innerText = d.nama;
+      row.insertCell(1).innerText = d.status;
+    });
+  });
+</script>
+
+</body>
+</html>
